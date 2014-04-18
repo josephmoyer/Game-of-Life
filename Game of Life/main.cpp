@@ -48,9 +48,9 @@ void print(Cell array[SIZE][SIZE])
 		for (int j = 0; j < SIZE; j++)
 		{
 			if (array[i][j].getState())
-				cout << "& ";
+				cout << "O ";
 			else
-				cout << "0 ";
+				cout << "x ";
 		}
 		cout << "\n";
 	}
@@ -66,7 +66,6 @@ void setNeighbors(Cell array[SIZE][SIZE])
 			array[i][j].setTopNeighbors(top);
 			array[i][j].setBottomNeighbors(&array[i + 10][j]);
 		}
-		cout << "\n";
 	}
 }
 
@@ -78,6 +77,5 @@ void iterate(Cell array[SIZE][SIZE])
 		{
 			array[i][j].evolve();
 		}
-		cout << "\n";
 	}
 }
