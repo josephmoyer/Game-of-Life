@@ -51,3 +51,23 @@ void Cell::evolve()
 	if (live == 3 && !getState())
 		setState(alive);
 }
+
+void Cell::setTopNeighbors(Cell* Neighbor)
+{
+	UpNeighbor = Neighbor;
+	UpLeftNeighbor = Neighbor - 1;
+	UpRightNeighbor = Neighbor + 1;
+}
+
+void Cell::setSideNeighbors()
+{
+
+	LeftNeighbor = this - 1;
+	RightNeighbor = this + 1;
+}
+void Cell::setBottomNeighbors(Cell* Neighbor)
+{
+	DownNeighbor = Neighbor;
+	DownLeftNeighbor = Neighbor - 1;
+	DownRightNeighbor = Neighbor + 1;
+}

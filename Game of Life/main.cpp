@@ -4,6 +4,8 @@ using namespace std;
 
 const int SIZE = 10;
 void print(Cell array[SIZE][SIZE]);
+void setNeighbors(Cell array[SIZE][SIZE]);
+void iterate(Cell array[SIZE][SIZE]);
 int main()
 {
 	cout << "*********************\n Game Of Life\n*********************\n";
@@ -22,9 +24,15 @@ int main()
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 	};
-	Cell SecondArray[SIZE][SIZE];
+	setNeighbors(FirstArray);
+	while (true){
 
-	print(FirstArray);
+		print(FirstArray);
+		iterate(FirstArray);
+		_sleep(1000);
+	}
+
+	
 	
 	char tmpe_input;
 	cout << "\nPress any key and enter to exit.\n";
@@ -40,9 +48,35 @@ void print(Cell array[SIZE][SIZE])
 		for (int j = 0; j < SIZE; j++)
 		{
 			if (array[i][j].getState())
-				cout << "&";
+				cout << "& ";
 			else
-				cout << "0";
+				cout << "0 ";
+		}
+		cout << "\n";
+	}
+}
+void setNeighbors(Cell array[SIZE][SIZE])
+{
+	for (int i = 0; i < SIZE; i++)
+	{
+		for (int j = 0; j < SIZE; j++)
+		{
+			Cell* top = &array[i-10][j];
+			array[i][j].setSideNeighbors();
+			array[i][j].setTopNeighbors(top);
+			array[i][j].setBottomNeighbors(&array[i + 10][j]);
+		}
+		cout << "\n";
+	}
+}
+
+void iterate(Cell array[SIZE][SIZE])
+{
+	for (int i = 0; i < SIZE; i++)
+	{
+		for (int j = 0; j < SIZE; j++)
+		{
+			array[i][j].evolve();
 		}
 		cout << "\n";
 	}
