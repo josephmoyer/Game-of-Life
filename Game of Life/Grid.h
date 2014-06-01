@@ -15,6 +15,6 @@ private:
 	std::vector<Cell> grid;
 	int length;
 	int height;
-
+	int edgecasehelp(int, int);
 };
 
