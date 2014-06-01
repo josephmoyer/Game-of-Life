@@ -28,7 +28,7 @@ void Cell::evolve()
 		live++;
 	if (UpNeighbor->getState())
 		live++;
-	if (UpRightNeighbor - getState())
+	if (UpRightNeighbor ->getState())
 		live++;
 	if (LeftNeighbor->getState())
 		live++;
@@ -41,33 +41,46 @@ void Cell::evolve()
 	if (DownRightNeighbor->getState())
 		live++;
 
-	if (live < 2)
-		setState(dead);
-	else if (live < 4)
+	if (getState())
+	{
+		if (live < 2)
+			setState(dead);
+		else if (live > 3)
+			setState(dead);
+	}
+	else if (live == 3)
 		setState(alive);
-	else if (live>3)
-		setState(dead);
-
-	if (live == 3 && !getState())
-		setState(alive);
 }
 
-void Cell::setTopNeighbors(Cell* Neighbor)
+void Cell::setUpRightNeighbor(Cell* neighbor)
 {
-	UpNeighbor = Neighbor;
-	UpLeftNeighbor = Neighbor - 1;
-	UpRightNeighbor = Neighbor + 1;
+	UpRightNeighbor = neighbor;
 }
-
-void Cell::setSideNeighbors()
+void Cell::setUpNeighbor(Cell* neighbor) 
 {
-
-	LeftNeighbor = this - 1;
-	RightNeighbor = this + 1;
+	UpNeighbor = neighbor;
 }
-void Cell::setBottomNeighbors(Cell* Neighbor)
+void Cell::setUpLeftNeighbor(Cell* neighbor)
 {
-	DownNeighbor = Neighbor;
-	DownLeftNeighbor = Neighbor - 1;
-	DownRightNeighbor = Neighbor + 1;
+	UpLeftNeighbor = neighbor;
+}
+void Cell::setLeftNeighbor(Cell* neighbor)
+{
+	LeftNeighbor = neighbor;
+}
+void Cell::setRightNeighbor(Cell* neighbor)
+{
+	RightNeighbor = neighbor;
+}
+void Cell::setDownLeftNeighbor(Cell* neighbor)
+{
+	DownLeftNeighbor = neighbor;
+}
+void Cell::setDownNeighbor(Cell* neighbor)
+{
+	DownNeighbor = neighbor;
+}
+void Cell::setDownRightNeighbor(Cell* neighbor)
+{
+	DownRightNeighbor = neighbor;
 }

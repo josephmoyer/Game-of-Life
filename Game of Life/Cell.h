@@ -11,9 +11,14 @@ public:
 	~Cell();
 	void setState(bool);
 	bool getState();
-	void setTopNeighbors(Cell*);
-	void setSideNeighbors();
-	void setBottomNeighbors(Cell*);
+	void setUpRightNeighbor(Cell*);
+	void setUpNeighbor(Cell*);
+	void setUpLeftNeighbor(Cell*);
+	void setLeftNeighbor(Cell*);
+	void setRightNeighbor(Cell*);
+	void setDownLeftNeighbor(Cell*);
+	void setDownNeighbor(Cell*);
+	void setDownRightNeighbor(Cell*);
 
 	void evolve();
 private:

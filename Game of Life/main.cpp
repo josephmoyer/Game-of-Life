@@ -55,19 +55,6 @@ void print(Cell array[SIZE][SIZE])
 		cout << "\n";
 	}
 }
-void setNeighbors(Cell array[SIZE][SIZE])
-{
-	for (int i = 0; i < SIZE; i++)
-	{
-		for (int j = 0; j < SIZE; j++)
-		{
-			Cell* top = &array[i-10][j];
-			array[i][j].setSideNeighbors();
-			array[i][j].setTopNeighbors(top);
-			array[i][j].setBottomNeighbors(&array[i + 10][j]);
-		}
-	}
-}
 
 void iterate(Cell array[SIZE][SIZE])
 {
