@@ -39,30 +39,3 @@ int main()
 	cin >> tmpe_input;
 	return 0;
 }
-
-void print(Cell array[SIZE][SIZE])
-{
-	system("cls");
-	for (int i = 0; i < SIZE; i++)
-	{
-		for (int j = 0; j < SIZE; j++)
-		{
-			if (array[i][j].getState())
-				cout << "O ";
-			else
-				cout << "x ";
-		}
-		cout << "\n";
-	}
-}
-
-void iterate(Cell array[SIZE][SIZE])
-{
-	for (int i = 0; i < SIZE; i++)
-	{
-		for (int j = 0; j < SIZE; j++)
-		{
-			array[i][j].evolve();
-		}
-	}
-}

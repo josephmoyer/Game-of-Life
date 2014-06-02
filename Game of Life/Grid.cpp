@@ -132,14 +132,47 @@ void Grid::setNeighbors()
 				grid[i + j].setDownRightNeighbor(&array[i + length + j + 1]);
 				break;
 			case 5:  //Not finished
-				grid[i + j].setUpLeftNeighbor(&array[i - length + j - 1]);
-				grid[i + j].setUpNeighbor(&array[i - length + j]);
-				grid[i + j].setUpRightNeighbor(&array[i - length + j + 1]);
-				grid[i + j].setLeftNeighbor(&array[i + j - 1]);
+				grid[i + j].setUpLeftNeighbor(&array[i + (height - 1) + j - 1]);
+				grid[i + j].setUpNeighbor(&array[i + (height - 1) + j]);
+				grid[i + j].setUpRightNeighbor(&array[i + (height - 1) + j + 1]);
+				grid[i + j].setLeftNeighbor(&array[i + length + j - 1]);
 				grid[i + j].setRightNeighbor(&array[i + j + 1]);
-				grid[i + j].setDownLeftNeighbor(&array[i + length + j - 1]);
+				grid[i + j].setDownLeftNeighbor(&array[i + length + length + j - 1]);
 				grid[i + j].setDownNeighbor(&array[i + length + j]);
 				grid[i + j].setDownRightNeighbor(&array[i + length + j + 1]);
+				break;
+			case 6:
+				grid[i + j].setUpLeftNeighbor(&array[i + (height - 1) + j - 1]);
+				grid[i + j].setUpNeighbor(&array[i + (height - 1) + j]);
+				grid[i + j].setUpRightNeighbor(&array[i + (height - 1) + j + 1]);
+				grid[i + j].setLeftNeighbor(&array[i + j - 1]);
+				grid[i + j].setRightNeighbor(&array[i + j + 1]);
+				grid[i + j].setDownLeftNeighbor(&array[j - 1]);
+				grid[i + j].setDownNeighbor(&array[j]);
+				grid[i + j].setDownRightNeighbor(&array[j + 1]);
+				break;
+			case 8:
+				grid[i + j].setUpLeftNeighbor(&array[i + (height - 1) + j - 1]);
+				grid[i + j].setUpNeighbor(&array[i + (height - 1) + j]);
+				grid[i + j].setUpRightNeighbor(&array[i + (height - 1) + j + 1]);
+				grid[i + j].setLeftNeighbor(&array[i + j - 1]);
+				grid[i + j].setRightNeighbor(&array[i - length + j + 1]);
+				grid[i + j].setDownLeftNeighbor(&array[j - 1]);
+				grid[i + j].setDownNeighbor(&array[j]);
+				grid[i + j].setDownRightNeighbor(&array[0]);
+				break;
+			case 10:
+				grid[i + j].setUpLeftNeighbor(&array[i + length + j - 1]);
+				grid[i + j].setUpNeighbor(&array[i + (height - 1) + j]);
+				grid[i + j].setUpRightNeighbor(&array[i + (height - 1) + j + 1]);
+				grid[i + j].setLeftNeighbor(&array[i + length + j - 1]);
+				grid[i + j].setRightNeighbor(&array[i + j + 1]);
+				grid[i + j].setDownLeftNeighbor(&array[length - 1]);
+				grid[i + j].setDownNeighbor(&array[0]);
+				grid[i + j].setDownRightNeighbor(&array[1]);
+				break;
+			default:
+				std::cout << "Error occured.\n";
 				break;
 			}
 		}
